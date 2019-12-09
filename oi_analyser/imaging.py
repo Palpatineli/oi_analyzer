@@ -3,6 +3,7 @@
 from typing import Tuple
 import colorsys
 import math
+import numexpr as ne
 
 import h5py as h5
 import numpy as np
@@ -48,7 +49,6 @@ def circular_transform(file_path: str) -> Tuple[np.ndarray, np.ndarray, np.ndarr
     h5file.close()
     return result, ave, phase[cam_frame_range]
 
-
 def detrend(file_path: str, rect: Rect, return_trend: bool = False) -> Tuple[np.ndarray, ...]:
     """Calculate the dft at period_in_seconds from a continuous optical imaging file.
 
@@ -68,7 +68,7 @@ def detrend(file_path: str, rect: Rect, return_trend: bool = False) -> Tuple[np.
         trend[idx] = np.mean(cam_frames[idx][rect[0]:rect[2], rect[1]:rect[3]])
 
     def linregress(x, y):
-        return np.linalg.lstsq(np.vstack([x, np.ones(len(y))]).T, y)
+        return np.linalg.lstsq(np.vstack([x, np.ones(len(y))]).T, y, rcond=None)
 
     slope, _ = linregress(np.arange(len(trend)), trend)[0]
 

@@ -12,6 +12,6 @@ setup(
     license='',
     author='Keji Li',
     author_email='mail@keji.li',
-    install_requires=['numpy >= 1.7', 'h5py', 'tqdm', 'scipy', 'uifunc', 'matplotlib'],
+    install_requires=['numpy >= 1.7', 'h5py', 'tqdm', 'scipy', 'uifunc', 'matplotlib', 'numexpr'],
     description='analyze images including cortical imaging and calcium imaging'
 )

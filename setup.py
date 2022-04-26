@@ -1,10 +1,10 @@
 """analyze optical imaging results"""
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='oi_analyser',
     version='0.1',
-    packages=['oi_analyser'],
+    packages=find_packages(),
     package_data={'data': ['data/*']},
     entry_points={'console_scripts': ['oi_convert = oi_analyser.imaging:convert',
                                       'oi_show = oi_analyser.imaging:calculate']},

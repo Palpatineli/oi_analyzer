@@ -1,0 +1,25 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "oi_analyser"
+authors = [{name = "Keji Li", email = "mail@keji.li"}]
+readme = "README.md"
+dynamic = ["version", "description"]
+dependencies = [
+    "numpy >= 1.7",
+    "h5py >= 3.7",
+    "tqdm >= 4.64",
+    "scipy >= 1.8",
+    "uifunc >= 0.1",
+    "matplotlib >= 3.5",
+    "numexpr >= 2.8"
+]
+
+[project.urls]
+Home = "https://keji.li"
+
+[scripts]
+oi_convert = "oi_analyser.imaging:convert"
+oi_show = "oi_analyser.imaging:calculate"
